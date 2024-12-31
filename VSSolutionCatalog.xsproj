@@ -65,6 +65,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <None Include="Model\Model Notes.txt" />
+    <None Include="Project Notes.txt" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
     </None>
