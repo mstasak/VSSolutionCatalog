@@ -16,6 +16,7 @@ BEGIN NAMESPACE VSSolutionCatalog.Model
     /// The AppDbContext class.
         /// Access using the static singleton Shared
     /// </summary>
+	CLASS AppDbContext
 
 	PARTIAL CLASS AppDbContext INHERIT DbContext
         // this manages the connection to the database
