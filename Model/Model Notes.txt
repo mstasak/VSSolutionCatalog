@@ -1,0 +1,26 @@
+﻿Model Notes
+
+Trying to use Entity Framework (for .Net Framework 4.8? or can I use Core?  I think 4.8),
+with a PostgreSQL database at localhost:5432.
+
+User setup:
+
+//schema owner
+create user 'VSSOLCAT' identified by 'password';
+grant x to VSSOLCAT;
+
+//administrator
+create user 'VSSOLCATADMIN' identified by 'password';
+grant x to VSSOLCAT;
+
+//app user
+create user 'VSSOLCATUSER' identified by 'password';
+grant x to VSSOLCAT;
+
+//query (read only) user
+create user 'VSSOLCATQUERY' identified by 'password';
+grant x to VSSOLCAT;
+
+
+Schema will be designed in code classed, managed by EF.
+
