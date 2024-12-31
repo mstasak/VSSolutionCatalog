@@ -1,62 +1,72 @@
 ﻿Model Notes
 
-Trying to use Entity Framework (for .Net Framework 4.8? or can I use Core?  I think 4.8),
-with a PostgreSQL database at localhost:5432.
+1st Variation: EF
+	Trying to use Entity Framework (for .Net Framework 4.8? or can I use Core?  I think 4.8),
+	with a PostgreSQL database at localhost:5432.
 
-User and DB Setup:
-
-
-Schema will be designed in code classes, managed by EF.
-
-CONNECT Postgres/Postgres;
-CREATE DATABASE VSSolCat
-  TEMPLATE DEFAULT;
-CONNECT Postgres/VSSolCat;
-CREATE ROLE VSSolCatOwnerRole;
-CREATE SCHEMA VSSolCatSchema;
-
-GRANT ALL PRIVILEGES
-  ON ALL TABLES
-  IN SCHEMA VSSolCatSchema
-  TO VSSolCatOwnerRole
-  WITH GRANT OPTION;
-
-CREATE USER VSSolCat
-  WITH PASSWORD 'password';
-
-CONNECT VSSolCat;
-
-CREATE ROLE VSSolCatAdminRole;
-
-GRANT ALL PRIVILEGES
-  ON ALL TABLES
-  IN SCHEMA VSSolCatSchema
-  TO VSSolCatAdminRole;
-
-CREATE USER VSSolCatAdmin
-  WITH PASSWORD 'password'
-  IN ROLE VSSolCatAdminRole;
-
-CREATE ROLE VSSolCatUserRole;
-CREATE ROLE VSSolCatQueryRole;
-
-GRANT ALL PRIVILEGES
-  ON ALL TABLES
-  IN SCHEMA VSSolCatSchema
-  TO VSSolCatUserRole;
-
-GRANT SELECT
-  ON ALL TABLES
-  IN SCHEMA VSSolCatSchema
-  TO VSSolCatQueryRole;
-
-CREATE USER VSSolCatUser 
-  WITH PASSWORD 'password'
-  IN ROLE VSSolCatUserRole;
-
-CREATE USER VSSolCatQuery
-  WITH PASSWORD 'password'
-  IN ROLE VSSolCatQueryRole;
+	User and DB Setup:
 
 
-DISCONNECT;
+	Schema will be designed in code classes, managed by EF.
+
+	(CONNECT Postgres/Postgres)
+	CREATE DATABASE VSSolCat
+	  TEMPLATE DEFAULT;
+
+	(CONNECT Postgres/VSSolCat)
+	CREATE ROLE VSSolCatOwnerRole;
+	CREATE SCHEMA VSSolCatSchema;
+
+	GRANT ALL PRIVILEGES
+	  ON ALL TABLES
+	  IN SCHEMA VSSolCatSchema
+	  TO VSSolCatOwnerRole
+	  WITH GRANT OPTION;
+
+	CREATE USER VSSolCat
+	  WITH PASSWORD 'password';
+
+	(CONNECT VSSolCat/Postgres)
+
+	CREATE ROLE VSSolCatAdminRole;
+
+	GRANT ALL PRIVILEGES
+	  ON ALL TABLES
+	  IN SCHEMA VSSolCatSchema
+	  TO VSSolCatAdminRole;
+
+	CREATE USER VSSolCatAdmin
+	  WITH PASSWORD 'password'
+	  IN ROLE VSSolCatAdminRole;
+
+	CREATE ROLE VSSolCatUserRole;
+	CREATE ROLE VSSolCatQueryRole;
+
+	GRANT ALL PRIVILEGES
+	  ON ALL TABLES
+	  IN SCHEMA VSSolCatSchema
+	  TO VSSolCatUserRole;
+
+	GRANT SELECT
+	  ON ALL TABLES
+	  IN SCHEMA VSSolCatSchema
+	  TO VSSolCatQueryRole;
+
+	CREATE USER VSSolCatUser 
+	  WITH PASSWORD 'password'
+	  IN ROLE VSSolCatUserRole;
+
+	CREATE USER VSSolCatQuery
+	  WITH PASSWORD 'password'
+	  IN ROLE VSSolCatQueryRole;
+
+
+	DISCONNECT;
+
+2nd Variation: Pure ADODB
+
+Same DB Setup as with EF
+
+3rd Variation: X#/XBase
+
+Same DB Setup as with EF

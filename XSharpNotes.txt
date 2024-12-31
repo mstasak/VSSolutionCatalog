@@ -1,0 +1,2 @@
+﻿VS Extension Help does not list PARTIAL among valid CLASS modifiers,
+in CLASS Statement (All dialects)
