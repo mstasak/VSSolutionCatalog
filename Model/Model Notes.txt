@@ -3,24 +3,60 @@
 Trying to use Entity Framework (for .Net Framework 4.8? or can I use Core?  I think 4.8),
 with a PostgreSQL database at localhost:5432.
 
-User setup:
-
-//schema owner
-create user 'VSSOLCAT' identified by 'password';
-grant x to VSSOLCAT;
-
-//administrator
-create user 'VSSOLCATADMIN' identified by 'password';
-grant x to VSSOLCAT;
-
-//app user
-create user 'VSSOLCATUSER' identified by 'password';
-grant x to VSSOLCAT;
-
-//query (read only) user
-create user 'VSSOLCATQUERY' identified by 'password';
-grant x to VSSOLCAT;
+User and DB Setup:
 
 
-Schema will be designed in code classed, managed by EF.
+Schema will be designed in code classes, managed by EF.
 
+CONNECT Postgres/Postgres;
+CREATE DATABASE VSSolCat
+  TEMPLATE DEFAULT;
+CONNECT Postgres/VSSolCat;
+CREATE ROLE VSSolCatOwnerRole;
+CREATE SCHEMA VSSolCatSchema;
+
+GRANT ALL PRIVILEGES
+  ON ALL TABLES
+  IN SCHEMA VSSolCatSchema
+  TO VSSolCatOwnerRole
+  WITH GRANT OPTION;
+
+CREATE USER VSSolCat
+  WITH PASSWORD 'password';
+
+CONNECT VSSolCat;
+
+CREATE ROLE VSSolCatAdminRole;
+
+GRANT ALL PRIVILEGES
+  ON ALL TABLES
+  IN SCHEMA VSSolCatSchema
+  TO VSSolCatAdminRole;
+
+CREATE USER VSSolCatAdmin
+  WITH PASSWORD 'password'
+  IN ROLE VSSolCatAdminRole;
+
+CREATE ROLE VSSolCatUserRole;
+CREATE ROLE VSSolCatQueryRole;
+
+GRANT ALL PRIVILEGES
+  ON ALL TABLES
+  IN SCHEMA VSSolCatSchema
+  TO VSSolCatUserRole;
+
+GRANT SELECT
+  ON ALL TABLES
+  IN SCHEMA VSSolCatSchema
+  TO VSSolCatQueryRole;
+
+CREATE USER VSSolCatUser 
+  WITH PASSWORD 'password'
+  IN ROLE VSSolCatUserRole;
+
+CREATE USER VSSolCatQuery
+  WITH PASSWORD 'password'
+  IN ROLE VSSolCatQueryRole;
+
+
+DISCONNECT;
