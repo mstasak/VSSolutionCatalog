@@ -16,35 +16,37 @@ BEGIN NAMESPACE VSSolutionCatalog.Model
     /// The AppDbContext class.
         /// Access using the static singleton Shared
     /// </summary>
-	CLASS AppDbContext
 
-	PARTIAL CLASS AppDbContext INHERIT DbContext
+	PUBLIC PARTIAL CLASS AppDbContext INHERIT DbContext
         // this manages the connection to the database
-        PRIVATE dbProvider AS STRING
-        PRIVATE dbDir AS STRING
-        //PRIVATE SqlServerConnectString := "Data Source=.;Initial Catalog=ToAll;Integrated Security=true;MultipleActiveResultSets=true;" AS STRING
+        
+        PROTECTED dbProvider AS STRING
+        
+        PROTECTED dbDir AS STRING
+        
+//PROTECTED SqlServerConnectString := "Data Source=.;Initial Catalog=ToAll;Integrated Security=true;MultipleActiveResultSets=true;" AS STRING
+        
+        STATIC PROTECTED m_shared AS AppDbContext
+        
+        STATIC EXPORT PROPERTY shared AS AppDbContext
+            GET => m_shared
+        END PROPERTY
 
-        CONSTRUCTOR(dbProvider := "POSTGRESQL" AS STRING, dbDir := "F:\\DATA\\" AS STRING)
+        EXPORT PROPERTY Solution AS DbSet<VSSolution> AUTO GET SET
+        
+        PUBLIC CONSTRUCTOR(dbProvider := "POSTGRESQL" AS STRING, dbDir := "F:\\DATA\\" AS STRING)
             SELF.dbProvider := dbProvider
             SELF.dbDir := dbDir
             RETURN
         END CONSTRUCTOR
-/* converting from C#...
+        
+        
+    END CLASS
 
-    PRIVATE STATIC readonly AppDbContext shared = NEW();
+END NAMESPACE // VSSolutionCatalog.Model
 
-    PUBLIC AppDbContext(STRING dbProvider = "SQLite", STRING dbDir = @"F:\Data\") {
-        THIS.dbProvider = dbProvider;
-        THIS.dbDir = dbDir;
-    }
-
-    PUBLIC STATIC AppDbContext Shared => shared;
-
-    PUBLIC DbSet<ToDoItem>? ToDoItems {
-        GET; SET;
-    }
-
-
+/*
+    converting from C#...
 
     PROTECTED OVERRIDE VOID OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
         IF (dbProvider == "SQLite") {
@@ -108,12 +110,4 @@ BEGIN NAMESPACE VSSolutionCatalog.Model
         SaveChanges();
     }
 
-                */
-
-//         CONSTRUCTOR()
-//             RETURN
-//         END CONSTRUCTOR
-
-    END CLASS
-
-END NAMESPACE // VSSolutionCatalog.Model
+*/
