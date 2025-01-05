@@ -1,0 +1,16 @@
+﻿Began to lose interest in the Entity Framework (EF) approach once I made sure we are locked into .Net Framework 4.8 or lower
+(for now).  I understand X# 3 will be based on a newer Roslyn compiler, covering at least .Net 8 and the CS 12 language level.
+
+For now, this means using an older version of EF (6) instead of EF Core, and losing some valuable current features.  This does
+not mean an EF6 is impossible, just less appealing.  As well needing to use an older EF version, we are usig a modified C# 7.3
+compiler, so some new language features won't be available in X# syntax.  Between the two, the entity annotations are more 
+limited (e.g. no "[Key]" or "[NotMapped]" attributes from recent System.ComponentModel.Annotations), the scaffolding of a DB
+from entity classes is harder (or maybe impossible?), ad I'm not sure how migration generation might work.  Overall, these
+feel like non-trivial obstacles and constraints.
+
+I also thought EF6 had a vulnerable NuGet dependency, but that was actually the EntityFramework.NPGSql Postgresql driver, and 
+also Microsoft's System.Text.Encodings.Web.  Both seemed manageable via selective package updates.
+
+Also will miss nullables (var i as Int64? := null), full tuple support and constructor initializers, off the top of my head.
+
+Changed Build Action to None and moved from Model folder to EFDbCtx subfolder, for now.

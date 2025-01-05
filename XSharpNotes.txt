@@ -1,2 +1,6 @@
 ﻿VS Extension Help does not list PARTIAL among valid CLASS modifiers,
 in CLASS Statement (All dialects)
+
+Class member variables are called, somewhat confusingly, fields.  It was difficult to find the
+documentation entries for EXPORT, PROTECTED, and others, if any (shouldn't there be matches for 
+public, private, protected, and internal?)
