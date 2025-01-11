@@ -12,9 +12,10 @@ USING System.Text
 BEGIN NAMESPACE VSSolutionCatalog.Model
 
     INTERFACE ITABLEROWMODIFIED
-    //    //@[NOTMAPPED];
+        // @[NOTMAPPED];
         PROPERTY OriginalRowValues AS OBJECT[] GET SET
         METHOD IsModified() AS LOGIC
+        //END METHOD
     END INTERFACE
 
 
@@ -23,14 +24,15 @@ BEGIN NAMESPACE VSSolutionCatalog.Model
     /// The VSSolution class.
     /// </summary>
     CLASS VSSolution IMPLEMENTS ITABLEROWMODIFIED
-
+        
         /// <summary>
-        /// Sentinel value for new row, not added to database yet (-1 will not work here, 0 seems easier than null).
+        /// Sentinel value for new row, not added to database yet (-1 will not work here, 0 seems easier than null (SQLite)).
         /// </summary>
         CONST ID_NEW := 0 AS INT
         //PUBLIC STATIC CONST ID_NEW := 0 AS INT <-- A CONST within a CLASS is already STATIC, XS0504
         //PUBLIC STATIC DEFINE ID_NEW := 0 AS INT <-- DEFINE not allowed within CLASS, with or without STATIC modifier, XS9002
 
+        
         // these properties map to columns in the database
         //[System.ComponentModel.DataAnnotations.Key]
         PROPERTY Id AS INT AUTO GET SET
@@ -48,6 +50,7 @@ BEGIN NAMESPACE VSSolutionCatalog.Model
         PROPERTY Created AS DATETIME AUTO GET SET
         PROPERTY Updated AS DATETIME AUTO GET SET
         PROPERTY OriginalRowValues AS OBJECT[] AUTO GET SET
+        
         METHOD IsModified() AS LOGIC
             IF OriginalRowValues IS NULL
                 THROW System.Exception{"ToDoItem.IsRowModified(): Attempt to compare current row to null OriginalValues row."}
@@ -90,15 +93,22 @@ BEGIN NAMESPACE VSSolutionCatalog.Model
         END METHOD
 
         OVERRIDE METHOD ToString() AS STRING
-            RETURN Name ?? "no name???";
+            RETURN Name ?? "no name???"
         END METHOD
 
-        METHOD SaveOriginalRow() AS VOID {
-            OriginalValues = Copy(THIS);
+        METHOD SaveOriginalRow AS VOID
+            OriginalRowValues := SELF:ToArray()
         END METHOD
+        
+        CONSTRUCTOR()
+            RETURN
+        END CONSTRUCTOR
+    END CLASS // VSSolution
+END NAMESPACE // VSSolutionCatalog.Model
+
 
 /*
-public class ToDoItem {
+PUBLIC CLASS ToDoItem {
 
 
     //methods
@@ -152,10 +162,5 @@ public class ToDoItem {
         Created = source.Created;
         Updated = source.Updated;
     }
-            */
+*/
 
-        CONSTRUCTOR()
-            RETURN
-        END CONSTRUCTOR
-    END CLASS // VSSolution
-END NAMESPACE // VSSolutionCatalog.Model
