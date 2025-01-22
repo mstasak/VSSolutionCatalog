@@ -59,7 +59,12 @@ TO VSSolCatAdminRole
 	  ON ALL TABLES
 	  IN SCHEMA VSSolCatSchema
 	  TO VSSolCatUserRole;
-	
+
+needed?
+GRANT ALL PRIVILEGES /* change to SELECT,INSERT,UPDATE,DELETE,TRUNCATE, ??? */
+ON SCHEMA VSSolCatSchema
+TO VSSolCatUserRole, VSSolCatUser
+		
 	GRANT SELECT
 	  ON ALL TABLES
 	  IN SCHEMA VSSolCatSchema
@@ -91,7 +96,7 @@ TO VSSolCatAdminRole
         Updated TIMESTAMP,
 		UNIQUE(Name)
 	);
-
+ALTER USER vssolcatuser SET search_path TO vssolcatschema, public;
 	DISCONNECT;
 
 2nd Variation: Pure ADODB

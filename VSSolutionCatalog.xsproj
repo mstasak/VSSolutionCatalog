@@ -152,6 +152,7 @@
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Compile Include="Helper\RelayCommand.prg" />
     <Compile Include="MainViewModel.prg" />
     <Compile Include="MainWindow.xaml.prg">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -191,6 +192,7 @@
     <Folder Include="Model\EFDbCtx" />
     <Folder Include="Model\AdodbDbCtx" />
     <Folder Include="Model\XSCoreCtx" />
+    <Folder Include="Helper" />
     <Folder Include="ViewModel" />
     <Folder Include="View" />
     <Folder Include="Properties\" />

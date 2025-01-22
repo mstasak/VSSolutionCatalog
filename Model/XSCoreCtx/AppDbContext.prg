@@ -18,7 +18,7 @@ USING System.Data.SqlClient
 //USING XSharp.RDD
 
 
-BEGIN NAMESPACE VSSolutionCatalog.Model.XSCoreCtx
+BEGIN NAMESPACE VSSolutionCatalog.Model
 
     /* This will be a poor mockup of an EF DBContext subclass, to provide similar entity set access for WPF forms to
     use.  It will not INHERIT FROM DBContext.  It will Access and manipulate data through normal X# data access

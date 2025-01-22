@@ -18,6 +18,12 @@
         <ToolBar Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             <TextBlock Text="Search:" FontSize="10" />
             <TextBox Margin="5,0,0,0" Width="120" FontSize="10" BorderBrush="SteelBlue" ></TextBox>
+            <Button Margin="15,0,0,0" FontSize="10" Content="Scan..." BorderBrush="SteelBlue" />
+            <TextBlock Text="DB Test:" FontSize="10" />
+            <Button Margin="15,0,0,0" FontSize="10" Content="Load" BorderBrush="SteelBlue" Command="{Binding TestDataLoadCommand}" />
+            <Button Margin="15,0,0,0" FontSize="10" Content="Add" BorderBrush="SteelBlue" Command="{Binding TestDataAddCommand}" />
+            <Button Margin="15,0,0,0" FontSize="10" Content="Delete" BorderBrush="SteelBlue" Command="{Binding TestDataDeleteCommand}" />
+            <Button Margin="15,0,0,0" FontSize="10" Content="Save" BorderBrush="SteelBlue" Command="{Binding TestDataSaveCommand}" />
         </ToolBar>
         <ListBox x:Name="LVSolutions" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Path=SolutionsList}">
             <!--<ListBoxItem>Apple</ListBoxItem>
