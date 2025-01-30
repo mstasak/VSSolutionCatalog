@@ -12,3 +12,6 @@ Added references:
   PostgreSQL: TBD
   Toolkits: TBD
 
+To Do:
+  Add screenshots (in AppImages child table)
+  Consider bookmarks/flags/keywords for favorite, archetype, active/in work, mature/retired
