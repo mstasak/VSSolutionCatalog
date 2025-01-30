@@ -1,7 +1,7 @@
 ﻿// RelayCommand.prg
-// Created by    : mstas
+// Created by    : Mark J. Stasak
 // Creation Date : 1/12/2025 8:58:51 PM
-// Created for   :
+// Created for   : vssolutioncatalog, an X#, .Net 4.8, MVVM, WPF, PostgreSQL learning project
 // WorkStation   : MSTASAK14
 
 // Translated from CSharp from: https://gist.github.com/DevInCube/d7e556c943d72cc4d3a4

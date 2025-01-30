@@ -1,14 +1,19 @@
 ﻿Purpose of project is to create and maintain a catalog of Visual Studio 
-solutions found under one or more user-specified directories.
+solutions found at or under one or more user-specified directories.
 
 User can make notes, rate projects, and disposition them (completion
 status and keep/delete).  Identifying notable reusable code would be a
 plus.  Hoping to shrink my bloated \Dev and \Proj directory trees.
 
-Starting project template: XSharp-WPF
-.Net version: Framework 4.8
-Added references:
-  EF: TBD
-  PostgreSQL: TBD
-  Toolkits: TBD
+Starting project template: XSharp-WPF (from "2.21.0.5 (Public)")
 
+.Net version: Framework 4.8
+
+Added references:
+  - EF: None (Use DBCommands, Readers, DBTables, etc.)
+  - PostgreSQL: Latest DB (v 17.2 on WinX64), Npgsql 5.0.18
+  - Toolkits: Nothing major/see NuGet Package References
+
+To Do:
+  - Add screenshots (in AppImages child table)
+  - Consider bookmarks/flags/keywords for favorite, archetype, active/in work, mature/retired

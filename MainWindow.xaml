@@ -19,7 +19,8 @@
             <TextBlock Text="Search:" FontSize="10" />
             <TextBox Margin="5,0,0,0" Width="120" FontSize="10" BorderBrush="SteelBlue" ></TextBox>
             <Button Margin="15,0,0,0" FontSize="10" Content="Scan..." BorderBrush="SteelBlue" />
-            <TextBlock Text="DB Test:" FontSize="10" />
+            <Button Margin="10,0,0,0" FontSize="10" Content="Clear" BorderBrush="SteelBlue" />
+            <TextBlock Margin="50,0,0,0" Text="DB Test:" FontSize="10" />
             <Button Margin="15,0,0,0" FontSize="10" Content="Load" BorderBrush="SteelBlue" Command="{Binding TestDataLoadCommand}" />
             <Button Margin="15,0,0,0" FontSize="10" Content="Add" BorderBrush="SteelBlue" Command="{Binding TestDataAddCommand}" />
             <Button Margin="15,0,0,0" FontSize="10" Content="Delete" BorderBrush="SteelBlue" Command="{Binding TestDataDeleteCommand}" />
