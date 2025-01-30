@@ -17,3 +17,5 @@ Added references:
 To Do:
   - Add screenshots (in AppImages child table)
   - Consider bookmarks/flags/keywords for favorite, archetype, active/in work, mature/retired
+  - open solution folder in Explorer
+  - open Solution in Visual Studio (how to launch if multiple versions installed?)
